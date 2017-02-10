@@ -38,6 +38,21 @@ public class QueenBoard{
      *all others are displayed as underscores '_'
      */
     public String toString(){
-    	return "";
+	String ans = "";
+	if (solve()){
+	    for(int col = 0; col<board[].length();col++){
+		for(int row = 0; row<board[].length();row++){
+		    if (board[row][col] == -1){
+			ans += "Q";
+		    }
+		    else{
+			ans += "_";
+		    }
+		}
+		ans += "\n";
+	    }
+	    return ans;
+	}
+        return "none";
     }
 }
