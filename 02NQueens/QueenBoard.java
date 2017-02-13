@@ -44,7 +44,16 @@ public class QueenBoard{
 	return solutionCount > 0;
     }
     private void addQueen(int col, int row){
-	board[col][row]
+	board[col][row] = -1;
+	for (int i = 0; i < board[].length(); i++){
+	    if(board[col][i] > -1){
+		board[col][i] += 1;
+	    }
+	    if(board[i][row] > -1){
+		board[i][row] += 1;
+	    }
+	}
+	
     }
 
     private void removeQueen(int col, int row){
