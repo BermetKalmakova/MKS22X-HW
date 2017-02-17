@@ -18,22 +18,47 @@ public class KnightBoard{
     }
 
     private void countPossible(int a, int b){
-	try{if(board[a+2][b+1] == 0){
+	try{
+	    if(board[a+2][b+1] == 0){
 		numPossible[a][b] ++;
 	    }
 	}
-	try{if(board[a+2][b-1] == 0){
+	try{
+	    if(board[a+2][b-1] == 0){
 		numPossible[a][b] ++;
 	    }
 	}
-	try{if(board[a-2][b+1] == 0){
-		numPossible[a][b] ==;
+	try{
+	    if(board[a-2][b+1] == 0){
+		numPossible[a][b] ++;
 	    }
 	}
-	try{if(board[a-2][b+1] == 0){
-		numPossible[a][b] ==;
+	try{
+	    if(board[a-2][b-1] == 0){
+		numPossible[a][b] ++;
 	    }
 	}
+	try{
+	    if(board[a+1][b+2] == 0){
+		numPossible[a][b] ++;
+	    }
+	}
+	try{
+	    if(board[a-1][b+2] == 0){
+		numPossible[a][b] ++;
+	    }
+	}
+	try{
+	    if(board[a+1][b-2] == 0){
+		numPossible[a][b] ++;
+	    }
+	}
+	try{
+	    if(board[a-1][b-2] == 0){
+		numPossible[a][b] ++;
+	    }
+	}
+    }
     
     public String toString(){
     }
@@ -56,10 +81,53 @@ public class KnightBoard{
 		}
 	    }
 	    board[row][col] = 0;
+	    
 	}
 	return false;
     }
+    //figure out which choice has the least possiblities and change numPossible to reflect that
     private boolean tryMoves(int a,int b){
+	int lowest = -1;
+	try{
+	    if(numPossible[a+2][b+1] == 0){
+		numPossible[a][b] ++;
+	    }
+	}
+	try{
+	    if(board[a+2][b-1] == 0){
+		numPossible[a][b] ++;
+	    }
+	}
+	try{
+	    if(board[a-2][b+1] == 0){
+		numPossible[a][b] ++;
+	    }
+	}
+	try{
+	    if(board[a-2][b-1] == 0){
+		numPossible[a][b] ++;
+	    }
+	}
+	try{
+	    if(board[a+1][b+2] == 0){
+		numPossible[a][b] ++;
+	    }
+	}
+	try{
+	    if(board[a-1][b+2] == 0){
+		numPossible[a][b] ++;
+	    }
+	}
+	try{
+	    if(board[a+1][b-2] == 0){
+		numPossible[a][b] ++;
+	    }
+	}
+	try{
+	    if(board[a-1][b-2] == 0){
+		numPossible[a][b] ++;
+	    }
+	}
 	
     }
 }
