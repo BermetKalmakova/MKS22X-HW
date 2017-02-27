@@ -85,22 +85,30 @@ public class KnightBoard{
 	}
 	return false;
     }
-    //figure out which choice has the least possiblities and change numPossible to reflect that
+    //figure out which choice has the least possiblities and change numPossible to reflect that nvm
     private boolean tryMoves(int a,int b){
-	int lowest = -1;
 	try{
-	    if(numPossible[a+2][b+1] == 0){
+	    if(board[a+2][b+1] == 0){
 		numPossible[a][b] ++;
+		newR = a+2;
+		newC = b+1;
+		return true;
 	    }
 	}
 	try{
 	    if(board[a+2][b-1] == 0){
 		numPossible[a][b] ++;
+		newR = a+2;
+		newC = b+1;
+		return true;
 	    }
 	}
 	try{
 	    if(board[a-2][b+1] == 0){
 		numPossible[a][b] ++;
+		newR = a+2;
+		newC = b+1;
+		return true;
 	    }
 	}
 	try{
@@ -128,6 +136,6 @@ public class KnightBoard{
 		numPossible[a][b] ++;
 	    }
 	}
-	
+	return false;
     }
 }
