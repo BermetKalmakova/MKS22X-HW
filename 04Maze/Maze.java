@@ -21,8 +21,21 @@ public class Maze{
     */
 
     public Maze(String filename){
+	animate = false;
+	Scanner file = new Scanner(new FileReader
+	
         //COMPLETE CONSTRUCTOR
     }
+    
+
+    private void wait(int millis){ //ADDED SORRY!
+         try {
+             Thread.sleep(millis);
+         }
+         catch (InterruptedException e) {
+         }
+     }
+
 
     public void setAnimate(boolean b){
 
@@ -80,6 +93,8 @@ public class Maze{
 
         return false; //so it compiles
     }
+
+
 
 
 }
