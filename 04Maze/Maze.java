@@ -22,7 +22,15 @@ public class Maze{
 
     public Maze(String filename){
 	animate = false;
-	Scanner file = new Scanner(new FileReader
+	
+	Scanner file = new Scanner(new FileReader(filename));
+	String[] lines = file.split("\\r?\\n");
+	maze = new char[lines.length][lines[0].length()];
+	for(int r = 0; r < lines.length;r ++){
+	    for(int c = 0; c < lines[0]; c++){
+		maze[r][c] = lines[r].charAt(c);
+	    }
+	}
 	
         //COMPLETE CONSTRUCTOR
     }
