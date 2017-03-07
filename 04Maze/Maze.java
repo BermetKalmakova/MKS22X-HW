@@ -32,18 +32,23 @@ public class Maze{
 	try{
 	    File x = new File(filename);
 	    Scanner file = new Scanner(x).useDelimiter("\\r?\\n");
-	    String[] lines = filename.split("\\r?\\n");
-	    maze = new char[lines.length][lines[0].length()];
+	    ArrayList<String> lines = new ArrayList<String>();
+	    while (file.hasNext()){
+		lines.add(file.next());
+	    }
+	    
+	    
+	    maze = new char[lines.size()][lines.get(0).length()];
 	
-	    for(int r = 0; r < lines.length;r ++){
-		for(int c = 0; c < lines[0].length(); c++){
-		    maze[r][c] = lines[r].charAt(c);
-		    if(lines[r].charAt(c) == 'S'){
+	    for(int r = 0; r < lines.size();r ++){
+		for(int c = 0; c < lines.get(0).length(); c++){
+		    maze[r][c] = lines.get(r).charAt(c);
+		    if(lines.get(r).charAt(c) == 'S'){
 			sr = r;
 			sc = c;
 			sthere = true;
 		    }
-		    if(lines[r].charAt(c) == 'E'){
+		    if(lines.get(r).charAt(c) == 'E'){
 			er = r;
 			ec = c;
 			ethere = true;
@@ -140,16 +145,14 @@ public class Maze{
 	}
 	if(maze[row][col] == ' '){
 	    maze[row][col] = '@';
+	    if(solve(row+1,col) || solve(row-1,col) || solve(row,col+1) || solve(row,col-1)){
+		return true;
+	    }
+	    else{
+		maze[row][col] = '.';
+	    }
 	}
-	if(maze[row][col] == '#' || maze[row][col] == '.'){
-	    return false;
-	}
-	if(solve(row+1,col) || solve(row-1,col) || solve(row,col+1) || solve(row,col-1)){
-	    return true;
-	}
-	else{
-	    maze[row][col] = '.';
-	}
+	
 
         //COMPLETE SOLVE
 
