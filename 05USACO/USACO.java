@@ -106,7 +106,7 @@ public class USACO{
 	    C2 = Integer.parseInt(linecoord[3]);
 
 	    grid = new char[N][M];
-	    moves = new int[T][N][M];
+	    moves = new int[T+1][N][M];
 	    for(int i = 0;i < N; i++){
 		for(int j = 0; j < M; j++){
 		    grid[i][j] = lines.get(i+1).charAt(j);
@@ -123,36 +123,40 @@ public class USACO{
 		for(int b = 0; b < N; b++){
 		    for(int c = 0; c < M; c++){
 			int sum = 0;
-			try{
-			    if(moves[a-1][b+1][c] > -1){
-				sum += moves[a-1][b+1][c];
+			if(moves[0][b][c] == -1){
+			    moves[a][b][c] = -1;
+			}
+			else{
+			    try{
+				if(moves[a-1][b+1][c] > -1){
+				    sum += moves[a-1][b+1][c];
+				}
 			    }
-			}
-			catch(IndexOutOfBoundsException e){
-			}
-			try{
-			    if(moves[a-1][b-1][c] > -1){
-				sum += moves[a-1][b-1][c];
+			    catch(IndexOutOfBoundsException e){
 			    }
-			}
-			catch(IndexOutOfBoundsException e){
-			}
-			try{
-			    if(moves[a-1][b][c+1] > -1){
-				sum += moves[a-1][b][c+1];
+			    try{
+				if(moves[a-1][b-1][c] > -1){
+				    sum += moves[a-1][b-1][c];
+				}
 			    }
-			}
-			catch(IndexOutOfBoundsException e){
-			}
-			try{
-			    if(moves[a-1][b][c-1] > -1){
-				sum += moves[a-1][b][c-1];
+			    catch(IndexOutOfBoundsException e){
 			    }
+			    try{
+				if(moves[a-1][b][c+1] > -1){
+				    sum += moves[a-1][b][c+1];
+				}
+			    }
+			    catch(IndexOutOfBoundsException e){
+			    }
+			    try{
+				if(moves[a-1][b][c-1] > -1){
+				    sum += moves[a-1][b][c-1];
+				}
+			    }
+			    catch(IndexOutOfBoundsException e){
+			    }
+			    moves[a][b][c] = sum;
 			}
-			catch(IndexOutOfBoundsException e){
-			}
-			moves[a][b][c] = sum;
-			System.out.println(toString(moves));
 		    }
 		}
 	    }
@@ -162,21 +166,21 @@ public class USACO{
 	}
 	return ans;
     }
-    public String toString(int[][][] ex){
-    	String ans = "";
-	for (int t = 0; t < ex.length;t++){
-	    for(int col = 0; col<ex[0].length;col++){
-		for(int row = 0; row<ex[0][0].length;row++){
-		    ans += ex[t][col][row];
-		}
-		ans += "\n";
-	    }
-	}
-    	return ans;
-    }
-    public static void main(String[] args){
-    	USACO x = new USACO(); //does not have to do anything. 
+    // public String toString(int[][][] ex){
+    // 	String ans = "";
+    // 	for (int t = 0; t < ex.length;t++){
+    // 	    for(int col = 0; col<ex[0].length;col++){
+    // 		for(int row = 0; row<ex[0][0].length;row++){
+    // 		    ans += ex[t][col][row];
+    // 		}
+    // 		ans += "\n";
+    // 	    }
+    // 	}
+    // 	return ans;
+    // }
+    // public static void main(String[] args){
+    // 	USACO x = new USACO(); //does not have to do anything. 
 
-    	System.out.println (x.silver("ctravel.in"));
-    }
+    // 	System.out.println (x.bronze("ctravel.in"));
+    // }
 }
