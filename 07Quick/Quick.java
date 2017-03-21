@@ -1,33 +1,30 @@
 import java.util.Random;
 public class Quick{
     public static int part(int[] data, int start, int end){
-	int[] temp = new int[data.length];
-	for (int i = 0; i < data.length; i++){
-	    if(i < start || i > end){
-		temp[i] = data[i];
-	    }
-	}
 	Random rand = new Random();
 	int x = rand.nextInt(end-start+1) + start;
-	int temps = start;
-	int tempe = end;
-	for (int i = start;i < end + 1; i++){
-	    if(i != x){
-		if(data[i] < data[x]){
-		    temp[temps] = data[i];
-		    temps++;
-		}
-		else{
-		    temp[tempe] = data[i];
-		    tempe--;
+
+	int s = start + 1;
+	int i = start + 1;
+	int e = end;
+	swap(data, 0, x);
+	int v = data[0];
+	while(i <= e){
+	    if(data[i] == v){
+		i ++;
+	    }
+	    else if(data[i] < v){
+		swap(data, s, i);
+		s++;
+		i++;
+	    }
+	    else{
+		swap(data, i, e);
+		    e--;
 		}
 	    }
 	}
-	temp[temps] = data[x];
-	for(int i = 0; i < temp.length; i++){
-	    data[i] = temp[i];
-	}
-	return temps;
+	return data[s];
     }
     public static int quickselect(int[] data, int k){
 	return quickselectH(data,k,0,data.length-1);
