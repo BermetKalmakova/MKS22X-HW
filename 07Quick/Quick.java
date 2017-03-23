@@ -46,13 +46,24 @@ public class Quick{
     	}
     	return quickselectH(data,k,start,x[0]-1);
     }
-    public static void main(String[]args){
-    	int[] ex = {0, 7, 6, 9, 2, 1, 5};
-    	System.out.println(quickselect(ex,5));
-    	for(int i = 0; i < ex.length; i++){
-    	    System.out.println(ex[i]);
-    	}
+    public static void quicksort(int[] data){
+	quicksorth(data,0,data.length-1);
     }
+    public static void quicksorth(int[] data, int start, int end){
+	if(start<end){
+	    int[] x = part(data, start, end);
+	    quicksorth(data,start,x[0]-1);
+	    quicksorth(data,x[1]+1,end);
+	}
+    }
+    // public static void main(String[]args){
+    // 	int[] ex = {0, 7, 6,5,5,5,5,2,9,7,5,3,2,4,6,7,9,6,5,3,2,3,4,5,9,0,7,35,68,35,98,24,46,054, 6, 6, 2, 1, 9, 2, 1, 5};
+    // 	//System.out.println(quickselect(ex,5));
+    // 	quicksort(ex);
+    // 	for(int i = 0; i < ex.length; i++){
+    // 	    System.out.println(ex[i]);
+    // 	}
+    // }
     
 		
 }
