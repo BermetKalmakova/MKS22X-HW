@@ -1,5 +1,5 @@
 import java.util.*;
-public class MyLinkedList{
+public class MyLinkedList implements Iterable<Integer>{
     private class LNode{
 	LNode next,prev;
 	int value;
@@ -10,6 +10,34 @@ public class MyLinkedList{
 	    return value + "";
 	}
 	//get set
+    }
+    private class LinkedListIterator implements Iterator<Integer>{
+	private LNode x;
+	private int i;
+	public LinkedListIterator(MyLinkedList a){
+	    x = a.head;
+	    i = 0;
+	}
+	public boolean hasNext(){
+	    return x.next != null;
+	}
+	public Integer next(){
+	    if(i == 0){
+		i ++;
+		return x.value;
+	    }
+	    if(hasNext()){
+		i++;
+		x = x.next;
+		return x.value;
+	    }
+	    else{
+		throw new NoSuchElementException();
+	    }
+	}
+	public void remove(){
+	    throw new UnsupportedOperationException();
+	}
     }
     LNode head,tail;
     int size;
@@ -34,8 +62,6 @@ public class MyLinkedList{
 	}
 	return node;
     }
-
-
     private void addAfter(LNode location, LNode toBeAdded){
 	toBeAdded.prev = location;
 	toBeAdded.next = location.next;
@@ -53,6 +79,16 @@ public class MyLinkedList{
 	else if(target == head){
 	    head = head.next;
 	    head.prev = null;
+	    size --;
+	}
+	else if(target == tail){
+	    tail = tail.prev;
+	    tail.next = null;
+	    size--;
+	}
+	else{
+	    target.prev.next = target.next;
+	    target.next.prev = target.prev;
 	    size --;
 	}
     }
@@ -87,8 +123,13 @@ public class MyLinkedList{
         return ans;
     }
 
-    public int indexOf(int value){/*complete this*/
-	return 0;
+    public int indexOf(int value){
+        for(int i = 0; i < size; i++){
+	    if(getNthNode(i).value == value){
+		return i;
+	    }
+	}
+	return -1;
     }
 
     public int remove(int index){
@@ -127,14 +168,20 @@ public class MyLinkedList{
 	    size ++;
 	}
     }
-    public static void main(String[] args){
-	MyLinkedList ex = new MyLinkedList();
-	System.out.println(ex.toString());
-	ex.add(3);
-	ex.add(0,5);
-        ex.add(7);
-	ex.add(1,6);
-	ex.set(0,1);
-	System.out.println(ex.toString());
+    public Iterator<Integer> iterator(){
+	return new LinkedListIterator(this);
     }
+    // public static void main(String[] args){
+    // 	MyLinkedList ex = new MyLinkedList();
+    // 	System.out.println(ex.toString());
+    // 	ex.add(3);
+    // 	ex.add(0,5);
+    //     ex.add(7);
+    // 	ex.add(1,6);
+    // 	ex.set(0,1);
+    //     Iterator a = ex.iterator();
+    // 	while(a.hasNext()){
+    // 	    System.out.println(a.next());
+    // 	}
+    // }
 }
