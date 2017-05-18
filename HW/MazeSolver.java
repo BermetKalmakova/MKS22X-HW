@@ -1,4 +1,5 @@
 public class MazeSolver{
+    public Maze board;
     public MazeSolver(String filename){
 	this(filename,false);
     }
