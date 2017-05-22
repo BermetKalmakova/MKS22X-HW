@@ -57,9 +57,9 @@ public class Quick{
 	}
     }
     // public static void main(String[]args){
-    // 	int[] ex = {0, 7, 6,5,5,5,5,2,9,7,5,3,2,4,6,7,9,6,5,3,2,3,4,5,9,0,7,35,68,35,98,24,46,054, 6, 6, 2, 1, 9, 2, 1, 5};
-    // 	//System.out.println(quickselect(ex,5));
-    // 	quicksort(ex);
+    // 	int[] ex = {0, 7, 6,5,5,5,5,2,9,11,1,1,1,1,1,1,1,5,3,2,4,6,7,9,6,1,1,1,5,3,2,3,4,5,9,0,7,35,68,35,98,24,46,054, 6, 6, 2, 1, 9, 2, 1, 5};
+    // 	System.out.println(quickselect(ex,6));
+    // 	//quicksort(ex);
     // 	for(int i = 0; i < ex.length; i++){
     // 	    System.out.println(ex[i]);
     // 	}
