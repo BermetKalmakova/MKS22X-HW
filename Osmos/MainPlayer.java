@@ -40,7 +40,7 @@ public class MainPlayer implements Players{
 	if (isBigger(x)){
 	    double amount = x.getRadius();
 	    radius += amount/2;
-	    speed -= amount/5;}
+	    speed -= amount/100;}
 
 	else{die();}
     }
@@ -52,7 +52,7 @@ public class MainPlayer implements Players{
     else{
       if(x<xcor){
         xcor -= speed;
-      }
+      }  
     }
     if(y>ycor){
       ycor += speed;
@@ -80,6 +80,8 @@ public class MainPlayer implements Players{
 
     public void die(){
 	alive = false;
+  xcor = -1000;
+  ycor = -1000;
     }
 
     public boolean isBigger(Players x){
