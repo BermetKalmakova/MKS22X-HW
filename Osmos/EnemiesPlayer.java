@@ -53,7 +53,9 @@ public class EnemiesPlayer implements Players{
 	    speed -= 0.05;}
 	else{die();}
     }
-	
+	  public void moveTo(){
+  moveTo(a.nextInt(1600),a.nextInt(800));
+}
     public void moveTo (int x, int y){
 if(x>xcor){
       xcor += speed;
